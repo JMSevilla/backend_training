@@ -94,40 +94,89 @@ namespace backend_training.Controllers
                 throw;
             }
         }
-
-        // PUT: api/users/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult Putuser(int id, user user)
+        [Route("get-all-users"), HttpGet]
+        public IHttpActionResult getall()
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != user.clientid)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(user).State = EntityState.Modified;
-
             try
             {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!userExists(id))
+                using (db)
                 {
-                    return NotFound();
+                    var obj = db.users.ToList();
+                    return Ok(obj);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        // PUT: api/users/5
+        [Route("activate-user"), HttpPut]
+        public IHttpActionResult Putuser(int id)
+        {
+            try
+            {
+                if(id <= 0)
+                {
+                    return Ok("invalid id");
                 }
                 else
                 {
-                    throw;
+                    using (db)
+                    {
+                        var obj = db.users.Where(x => x.clientid == id).FirstOrDefault();
+                        if(obj != null)
+                        {
+                            obj.istype = "1";
+                            db.SaveChanges();
+                            return Ok("activated");
+                        }
+                        else
+                        {
+                            return NotFound();
+                        }
+                    }
                 }
             }
+            catch (Exception)
+            {
 
-            return StatusCode(HttpStatusCode.NoContent);
+                throw;
+            }
+        }
+        [Route("deactivate-user"), HttpPut]
+        public IHttpActionResult deactivateuser(int id)
+        {
+            try
+            {
+                if (id <= 0)
+                {
+                    return Ok("invalid id");
+                }
+                else
+                {
+                    using (db)
+                    {
+                        var obj = db.users.Where(x => x.clientid == id).FirstOrDefault();
+                        if (obj != null)
+                        {
+                            obj.istype = "0";
+                            db.SaveChanges();
+                            return Ok("deactivated");
+                        }
+                        else
+                        {
+                            return NotFound();
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
         class UsersClass {
             public string firstname { get; set; }
@@ -176,7 +225,7 @@ namespace backend_training.Controllers
         }
 
         // DELETE: api/users/5
-        [ResponseType(typeof(user))]
+        [Route("delete-user"), HttpDelete]
         public IHttpActionResult Deleteuser(int id)
         {
             user user = db.users.Find(id);
@@ -188,7 +237,7 @@ namespace backend_training.Controllers
             db.users.Remove(user);
             db.SaveChanges();
 
-            return Ok(user);
+            return Ok("success delete");
         }
 
         protected override void Dispose(bool disposing)

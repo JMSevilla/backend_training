@@ -52,6 +52,12 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SendGrid, Version=9.24.1.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\SendGrid.9.24.1\lib\net452\SendGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="StarkbankEcdsa, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b2e6337a5d77bfbc, processorArchitecture=MSIL">
+      <HintPath>..\packages\starkbank-ecdsa.1.3.1\lib\net452\StarkbankEcdsa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -164,14 +170,38 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\devlogin\CredentialsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReactBackendController.cs" />
+    <Compile Include="Controllers\ReactServerSideController.cs" />
+    <Compile Include="Controllers\tbusersController.cs" />
     <Compile Include="Controllers\usersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CredentialsAuthentication.cs" />
     <Compile Include="Models\Data.cs" />
+    <Compile Include="Models\fsdblive.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>fsdblive.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\fsdblive.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>fsdblive.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\fsdblive.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>fsdblive.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\infoClass.cs" />
     <Compile Include="Models\InformationClass.cs" />
+    <Compile Include="Models\infotb.cs">
+      <DependentUpon>fsdblive.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Mymodel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -187,7 +217,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Mymodel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\registerClass.cs" />
+    <Compile Include="Models\tbinformation.cs">
+      <DependentUpon>Mymodel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbuser.cs">
+      <DependentUpon>Mymodel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\token_validator.cs">
+      <DependentUpon>Mymodel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\user.cs">
+      <DependentUpon>Mymodel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\verifiercode.cs">
       <DependentUpon>Mymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -201,6 +244,16 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\fsdblive.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>fsdblive.edmx</DependentUpon>
+      <LastGenOutput>fsdblive.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\fsdblive.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>fsdblive.edmx</DependentUpon>
+      <LastGenOutput>fsdblive.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\Mymodel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Mymodel.edmx</DependentUpon>
@@ -238,6 +291,13 @@
     </EntityDeploy>
     <Content Include="Models\Mymodel.edmx.diagram">
       <DependentUpon>Mymodel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\fsdblive.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>fsdblive.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\fsdblive.edmx.diagram">
+      <DependentUpon>fsdblive.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

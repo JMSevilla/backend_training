@@ -6,6 +6,10 @@
     <edmx:Diagrams>
       <Diagram DiagramId="49aef564e9014a868a62bb6b741e3878" Name="Diagram1">
         <EntityTypeShape EntityType="mydatabaseModel.user" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mydatabaseModel.tbuser" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="mydatabaseModel.verifiercode" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="mydatabaseModel.token_validator" Width="1.5" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="mydatabaseModel.tbinformation" Width="1.5" PointX="12" PointY="2.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

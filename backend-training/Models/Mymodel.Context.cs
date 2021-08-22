@@ -26,5 +26,9 @@ namespace backend_training.Models
         }
     
         public virtual DbSet<user> users { get; set; }
+        public virtual DbSet<tbuser> tbusers { get; set; }
+        public virtual DbSet<verifiercode> verifiercodes { get; set; }
+        public virtual DbSet<token_validator> token_validator { get; set; }
+        public virtual DbSet<tbinformation> tbinformations { get; set; }
     }
 }

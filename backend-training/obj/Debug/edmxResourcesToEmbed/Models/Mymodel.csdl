@@ -14,5 +14,54 @@
   </EntityType>
   <EntityContainer Name="mydatabaseEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="users" EntityType="Self.user" />
+    <EntitySet Name="tbusers" EntityType="mydatabaseModel.tbuser" />
+    <EntitySet Name="verifiercodes" EntityType="mydatabaseModel.verifiercode" />
+    <EntitySet Name="token_validator" EntityType="mydatabaseModel.token_validator" />
+    <EntitySet Name="tbinformations" EntityType="mydatabaseModel.tbinformation" />
   </EntityContainer>
+  <EntityType Name="tbuser">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="isverified" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="istype" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="isstatus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="createdAt" Type="DateTime" Precision="3" />
+    <Property Name="istoken" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="verifiercode">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="vcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="isdone" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="createdAt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="token_validator">
+    <Key>
+      <PropertyRef Name="tokenID" />
+    </Key>
+    <Property Name="tokenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="token" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="isvalid" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="createdAt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbinformation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="createdAt" Type="DateTime" Precision="3" />
+  </EntityType>
 </Schema>

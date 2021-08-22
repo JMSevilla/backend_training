@@ -14,5 +14,54 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tbusers">
+      <EntityTypeMapping TypeName="mydatabaseModel.tbuser">
+        <MappingFragment StoreEntitySet="tbusers">
+          <ScalarProperty Name="istoken" ColumnName="istoken" />
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+          <ScalarProperty Name="isstatus" ColumnName="isstatus" />
+          <ScalarProperty Name="istype" ColumnName="istype" />
+          <ScalarProperty Name="isverified" ColumnName="isverified" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="verifiercodes">
+      <EntityTypeMapping TypeName="mydatabaseModel.verifiercode">
+        <MappingFragment StoreEntitySet="verifiercode">
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+          <ScalarProperty Name="isdone" ColumnName="isdone" />
+          <ScalarProperty Name="vcode" ColumnName="vcode" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="token_validator">
+      <EntityTypeMapping TypeName="mydatabaseModel.token_validator">
+        <MappingFragment StoreEntitySet="token_validator">
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+          <ScalarProperty Name="isvalid" ColumnName="isvalid" />
+          <ScalarProperty Name="token" ColumnName="token" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="tokenID" ColumnName="tokenID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbinformations">
+      <EntityTypeMapping TypeName="mydatabaseModel.tbinformation">
+        <MappingFragment StoreEntitySet="tbinformation">
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

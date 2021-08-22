@@ -4,7 +4,42 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="mydatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="mydatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbinformation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="100" />
+          <Property Name="lastname" Type="varchar" MaxLength="100" />
+          <Property Name="createdAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbusers">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="100" />
+          <Property Name="lastname" Type="varchar" MaxLength="100" />
+          <Property Name="address" Type="text" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+          <Property Name="password" Type="varchar(max)" />
+          <Property Name="isverified" Type="char" MaxLength="1" />
+          <Property Name="istype" Type="char" MaxLength="1" />
+          <Property Name="isstatus" Type="char" MaxLength="1" />
+          <Property Name="createdAt" Type="datetime" />
+          <Property Name="istoken" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="token_validator">
+          <Key>
+            <PropertyRef Name="tokenID" />
+          </Key>
+          <Property Name="tokenID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="token" Type="varchar(max)" />
+          <Property Name="isvalid" Type="char" MaxLength="1" />
+          <Property Name="createdAt" Type="datetime" />
+        </EntityType>
         <EntityType Name="users">
           <Key>
             <PropertyRef Name="clientid" />
@@ -17,11 +52,24 @@
           <Property Name="istype" Type="char" MaxLength="1" />
           <Property Name="createdAt" Type="datetime" />
         </EntityType>
+        <EntityType Name="verifiercode">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+          <Property Name="vcode" Type="varchar(max)" />
+          <Property Name="isdone" Type="char" MaxLength="1" />
+          <Property Name="createdAt" Type="datetime" />
+        </EntityType>
         <EntityContainer Name="mydatabaseModelStoreContainer">
+          <EntitySet Name="tbinformation" EntityType="Self.tbinformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbusers" EntityType="Self.tbusers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="token_validator" EntityType="Self.token_validator" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="verifiercode" EntityType="Self.verifiercode" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="mydatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -39,7 +87,56 @@
         </EntityType>
         <EntityContainer Name="mydatabaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="tbusers" EntityType="mydatabaseModel.tbuser" />
+          <EntitySet Name="verifiercodes" EntityType="mydatabaseModel.verifiercode" />
+          <EntitySet Name="token_validator" EntityType="mydatabaseModel.token_validator" />
+          <EntitySet Name="tbinformations" EntityType="mydatabaseModel.tbinformation" />
         </EntityContainer>
+        <EntityType Name="tbuser">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="isverified" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="istype" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="isstatus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="createdAt" Type="DateTime" Precision="3" />
+          <Property Name="istoken" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="verifiercode">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="vcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="isdone" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="createdAt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="token_validator">
+          <Key>
+            <PropertyRef Name="tokenID" />
+          </Key>
+          <Property Name="tokenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="token" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="isvalid" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="createdAt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbinformation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="createdAt" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -56,6 +153,55 @@
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="istype" ColumnName="istype" />
                 <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbusers">
+            <EntityTypeMapping TypeName="mydatabaseModel.tbuser">
+              <MappingFragment StoreEntitySet="tbusers">
+                <ScalarProperty Name="istoken" ColumnName="istoken" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+                <ScalarProperty Name="isstatus" ColumnName="isstatus" />
+                <ScalarProperty Name="istype" ColumnName="istype" />
+                <ScalarProperty Name="isverified" ColumnName="isverified" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="verifiercodes">
+            <EntityTypeMapping TypeName="mydatabaseModel.verifiercode">
+              <MappingFragment StoreEntitySet="verifiercode">
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+                <ScalarProperty Name="isdone" ColumnName="isdone" />
+                <ScalarProperty Name="vcode" ColumnName="vcode" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="token_validator">
+            <EntityTypeMapping TypeName="mydatabaseModel.token_validator">
+              <MappingFragment StoreEntitySet="token_validator">
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+                <ScalarProperty Name="isvalid" ColumnName="isvalid" />
+                <ScalarProperty Name="token" ColumnName="token" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tokenID" ColumnName="tokenID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbinformations">
+            <EntityTypeMapping TypeName="mydatabaseModel.tbinformation">
+              <MappingFragment StoreEntitySet="tbinformation">
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,3 +1,5 @@
+C:\Users\devop\source\repos\backend-training\backend-training\obj\Debug\backend_training.csproj.AssemblyReference.cache
+C:\Users\devop\source\repos\backend-training\backend-training\obj\Debug\backend_training.csproj.CoreCompileInputs.cache
 C:\Users\devop\source\repos\backend-training\backend-training\bin\backend-training.dll.config
 C:\Users\devop\source\repos\backend-training\backend-training\bin\backend-training.dll
 C:\Users\devop\source\repos\backend-training\backend-training\bin\backend-training.pdb
@@ -56,6 +58,8 @@ C:\Users\devop\source\repos\backend-training\backend-training\bin\EntityFramewor
 C:\Users\devop\source\repos\backend-training\backend-training\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\devop\source\repos\backend-training\backend-training\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\devop\source\repos\backend-training\backend-training\bin\Newtonsoft.Json.dll
+C:\Users\devop\source\repos\backend-training\backend-training\bin\SendGrid.dll
+C:\Users\devop\source\repos\backend-training\backend-training\bin\StarkbankEcdsa.dll
 C:\Users\devop\source\repos\backend-training\backend-training\bin\System.Net.Http.Formatting.dll
 C:\Users\devop\source\repos\backend-training\backend-training\bin\System.Web.Helpers.dll
 C:\Users\devop\source\repos\backend-training\backend-training\bin\System.Web.Http.dll
@@ -69,6 +73,8 @@ C:\Users\devop\source\repos\backend-training\backend-training\bin\System.Web.Web
 C:\Users\devop\source\repos\backend-training\backend-training\bin\WebGrease.dll
 C:\Users\devop\source\repos\backend-training\backend-training\bin\EntityFramework.xml
 C:\Users\devop\source\repos\backend-training\backend-training\bin\EntityFramework.SqlServer.xml
+C:\Users\devop\source\repos\backend-training\backend-training\bin\SendGrid.pdb
+C:\Users\devop\source\repos\backend-training\backend-training\bin\SendGrid.xml
 C:\Users\devop\source\repos\backend-training\backend-training\bin\Newtonsoft.Json.xml
 C:\Users\devop\source\repos\backend-training\backend-training\bin\System.Net.Http.Formatting.xml
 C:\Users\devop\source\repos\backend-training\backend-training\bin\System.Web.Helpers.xml
@@ -82,8 +88,6 @@ C:\Users\devop\source\repos\backend-training\backend-training\bin\System.Web.Web
 C:\Users\devop\source\repos\backend-training\backend-training\bin\System.Web.WebPages.Razor.xml
 C:\Users\devop\source\repos\backend-training\backend-training\bin\Antlr3.Runtime.pdb
 C:\Users\devop\source\repos\backend-training\backend-training\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\devop\source\repos\backend-training\backend-training\obj\Debug\backend_training.csproj.AssemblyReference.cache
-C:\Users\devop\source\repos\backend-training\backend-training\obj\Debug\backend_training.csproj.CoreCompileInputs.cache
 C:\Users\devop\source\repos\backend-training\backend-training\obj\Debug\backend_training.csproj.CopyComplete
 C:\Users\devop\source\repos\backend-training\backend-training\obj\Debug\backend-training.dll
 C:\Users\devop\source\repos\backend-training\backend-training\obj\Debug\backend-training.pdb
